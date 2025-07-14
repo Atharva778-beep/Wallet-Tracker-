@@ -1,41 +1,22 @@
-let transactions = JSON.parse(localStorage.getItem("walletTracker")) || [];
 
-function updateUI() {
-  const list = document.getElementById("transaction-list");
-  const balanceDisplay = document.getElementById("balance");
-
-  list.innerHTML = "";
-  let total = 0;
-
-  transactions.forEach((item, index) => {
-    total += parseFloat(item.amount);
-
-    const li = document.createElement("li");
-    li.innerHTML = `
-      ${item.category} - $${parseFloat(item.amount).toFixed(2)}
-      <button onclick="deleteTransaction(${index})">❌</button>
-    `;
-    list.appendChild(li);
-  });
-
-  balanceDisplay.textContent = `$${total.toFixed(2)}`;
-  localStorage.setItem("walletTracker", JSON.stringify(transactions));
-}
+let totalBalance = 0;
+const balanceDisplay = document.getElementById('total-balance');
+const historyList = document.getElementById('history-list');
 
 function addTransaction() {
-  const amount = document.getElementById("amount").value;
-  const category = document.getElementById("category").value;
+  const description = document.getElementById('description').value;
+  const amount = parseFloat(document.getElementById('amount').value);
+  const type = document.getElementById('type').value;
 
-  if (!amount || amount <= 0) return alert("Enter a valid amount");
+  if (!description || isNaN(amount)) return;
 
-  transactions.push({ amount, category });
-  document.getElementById("amount").value = "";
-  updateUI();
+  const li = document.createElement('li');
+  li.textContent = `${type.toUpperCase()}: ${description} - $${amount}`;
+  historyList.appendChild(li);
+
+  totalBalance += (type === 'income' ? amount : -amount);
+  balanceDisplay.textContent = totalBalance.toFixed(2);
+
+  document.getElementById('description').value = '';
+  document.getElementById('amount').value = '';
 }
-
-function deleteTransaction(index) {
-  transactions.splice(index, 1);
-  updateUI();
-}
-
-updateUI();

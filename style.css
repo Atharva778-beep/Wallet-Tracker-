@@ -1,57 +1,37 @@
+
 body {
-  font-family: 'Arial', sans-serif;
-  background: #e9f0fc;
+  font-family: Arial, sans-serif;
+  background: #e6f2ff;
   margin: 0;
-  padding: 20px;
-}
-
-.container {
-  max-width: 400px;
-  background: white;
-  margin: auto;
-  border-radius: 16px;
-  padding: 20px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-}
-
-header {
-  text-align: center;
-}
-
-h2 {
-  color: #333;
-}
-
-.form-section {
-  margin: 20px 0;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-input, select, button {
-  padding: 12px;
-  border: none;
-  border-radius: 12px;
-  font-size: 16px;
-}
-
-button {
-  background: #333;
-  color: white;
-  cursor: pointer;
-}
-
-ul {
-  list-style: none;
   padding: 0;
 }
-
-li {
-  background: #f0f4ff;
-  margin: 10px 0;
-  padding: 12px;
-  border-radius: 12px;
-  display: flex;
-  justify-content: space-between;
+header {
+  background: #0077cc;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+}
+main {
+  padding: 2rem;
+}
+.balance {
+  background: #d0e6ff;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+.add-transaction input, .add-transaction select {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  width: calc(100% - 1rem);
+}
+.add-transaction button {
+  padding: 0.5rem 1rem;
+  background: #0077cc;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+.history {
+  margin-top: 1rem;
 }
