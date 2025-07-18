@@ -1,22 +1,24 @@
 
-let totalBalance = 0;
-const balanceDisplay = document.getElementById('total-balance');
-const historyList = document.getElementById('history-list');
+let balance = 0;
 
-function addTransaction() {
-  const description = document.getElementById('description').value;
-  const amount = parseFloat(document.getElementById('amount').value);
-  const type = document.getElementById('type').value;
+function addExpense() {
+    const amount = parseFloat(document.getElementById('amount').value);
+    const category = document.getElementById('category').value;
+    const currency = document.getElementById('currency').value;
+    const dateTime = document.getElementById('dateTime').value;
 
-  if (!description || isNaN(amount)) return;
+    if (!amount || !dateTime) {
+        alert("Please enter amount and date/time.");
+        return;
+    }
 
-  const li = document.createElement('li');
-  li.textContent = `${type.toUpperCase()}: ${description} - $${amount}`;
-  historyList.appendChild(li);
+    balance -= amount;
+    document.getElementById('balance').innerText = currency + balance.toFixed(2);
 
-  totalBalance += (type === 'income' ? amount : -amount);
-  balanceDisplay.textContent = totalBalance.toFixed(2);
+    const listItem = document.createElement('li');
+    listItem.innerText = `${currency}${amount.toFixed(2)} - ${category} on ${new Date(dateTime).toLocaleString()}`;
+    document.getElementById('expense-list').appendChild(listItem);
 
-  document.getElementById('description').value = '';
-  document.getElementById('amount').value = '';
+    document.getElementById('amount').value = '';
+    document.getElementById('dateTime').value = '';
 }

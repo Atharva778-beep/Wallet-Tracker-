@@ -2,33 +2,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Student Wallet Tracker</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Wallet Tracker</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>Student Digital Wallet</h1>
-  </header>
-  <main>
-    <section class="balance">
-      <h2>Total Balance: $<span id="total-balance">0.00</span></h2>
-    </section>
-    <section class="add-transaction">
-      <input type="text" id="description" placeholder="Description" />
-      <input type="number" id="amount" placeholder="Amount" />
-      <select id="type">
-        <option value="income">Income</option>
-        <option value="expense">Expense</option>
-      </select>
-      <button onclick="addTransaction()">Add</button>
-    </section>
-    <section class="history">
-      <h3>Transaction History</h3>
-      <ul id="history-list"></ul>
-    </section>
-  </main>
-  <script src="script.js"></script>
+    <div class="container">
+        <h1>Total Balance</h1>
+        <div id="balance">$0.00</div>
+        <input type="number" id="amount" placeholder="Enter amount">
+        <select id="currency">
+            <option value="$">$ (USD)</option>
+            <option value="₹">₹ (INR)</option>
+            <option value="₿">₿ (BTC)</option>
+        </select>
+        <select id="category">
+            <option value="Food">🍔 Food</option>
+            <option value="Shopping">🛍️ Shopping</option>
+            <option value="Transport">🚗 Transport</option>
+        </select>
+        <input type="datetime-local" id="dateTime" />
+        <button onclick="addExpense()">Add Expense</button>
+        <h2>Expenses</h2>
+        <ul id="expense-list"></ul>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
